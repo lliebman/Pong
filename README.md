@@ -1,7 +1,5 @@
-#Pong
-One Pong to rule them all
-
-
+# Pong
+One pong to rule them all
 
 ### Contributors
 Rachel Gutmann (https://github.com/rachel613g)    
