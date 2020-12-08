@@ -1,4 +1,6 @@
 package pong;
 
-public class PongView {
+import javax.swing.*;
+
+public class PongView extends JComponent {
 }
