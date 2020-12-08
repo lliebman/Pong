@@ -14,13 +14,9 @@ public class PaddleKeyListener extends KeyAdapter {
     @Override
     public void keyPressed(KeyEvent e) {
         super.keyPressed(e);
-        switch(e.getKeyCode()) {
-            case KeyEvent.VK_DOWN:
-
-                break;
-            case KeyEvent.VK_UP:
-
-                break;
+        switch (e.getKeyCode()) {
+            case KeyEvent.VK_DOWN -> paddle.move(Direction.South);
+            case KeyEvent.VK_UP -> paddle.move(Direction.North);
         }
     }
 }
