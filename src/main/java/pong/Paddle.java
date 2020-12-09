@@ -5,7 +5,7 @@ public class Paddle {
 
     public Paddle(Player player){
         y = PongFrame.HEIGHT/2;
-        if (player.equals(Player.HUMAN)){
+        if (player.equals(Player.USER)){
             //set human paddle to right side of board
             x = PongFrame.WIDTH - PongView.PADDLE_WIDTH;
         } else {
