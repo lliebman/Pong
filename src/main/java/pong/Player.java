@@ -1,5 +1,5 @@
 package pong;
 
 public enum Player {
-    COMPUTER, USER
+    USER, COMPUTER
 }
