@@ -7,7 +7,7 @@ public class PongFrame extends JFrame {
 
     public PongFrame(PongView pongView, PaddleKeyListener paddleListener) throws HeadlessException {
         super();
-        setSize(800,400);
+        setSize(Environment.WIDTH,Environment.HEIGHT);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setTitle("Pong");
         setLayout(new BorderLayout());

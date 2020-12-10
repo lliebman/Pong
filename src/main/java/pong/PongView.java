@@ -6,7 +6,9 @@ import java.awt.*;
 public class PongView extends JComponent {
     private final Environment environment;
 
-    public PongView(Environment environment) {this.environment = environment;}
+    public PongView(Environment environment) {
+        this.environment = environment;
+    }
 
     @Override
     protected void paintComponent(Graphics g) {
@@ -21,7 +23,7 @@ public class PongView extends JComponent {
 
     private void paintBackground(Graphics g) {
         g.setColor(Color.black);
-        g.fillRect(0,0,getWidth(),getHeight());
+        g.fillRect(0, 0, getWidth(), getHeight());
     }
 
     private void paintPaddles(Graphics g) {
