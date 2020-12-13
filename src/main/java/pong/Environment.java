@@ -1,8 +1,8 @@
 package pong;
 
 public class Environment {
-    public static final int WIDTH = 100;
-    public static final int HEIGHT = 40;
+    public static final int WIDTH = 700;
+    public static final int HEIGHT = 500;
 
     private final Paddle user;
     private final Paddle opponent;
