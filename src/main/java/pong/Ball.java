@@ -48,7 +48,7 @@ public class Ball {
 
     public void checkWallCollide() {
         if (this.y >= PongFrame.HEIGHT - MID_OF_BALL || this.y <= MID_OF_BALL)
-            velX = -velX;
+            velY = -velY;
     }
 
     public void checkPaddleCollide() {
@@ -59,7 +59,7 @@ public class Ball {
                 (this.x <= userPaddle.getX() + PongView.PADDLE_WIDTH - MID_OF_BALL &&
                         this.y >= compPaddle.getY() &&
                         this.y <= compPaddle.getY() + PongView.PADDLE_HEIGHT)) {
-            velY = -velY;
+            velX = -velX;
         }
     }
 }
