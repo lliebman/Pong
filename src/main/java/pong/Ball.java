@@ -27,7 +27,7 @@ public class Ball {
         double randSpeed = (Math.random() * 3 + 2);
         double randDirection = Math.random() * 2;
         //randDirection will be assigned as either 1 or -1
-        randDirection = randDirection == 1? 1: -1;
+        randDirection = randDirection >= 1.0? 1.0: -1.0;
 
         return randSpeed * randDirection;
     }
