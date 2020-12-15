@@ -10,7 +10,7 @@ public class Paddle {
 
     public Paddle(){
         y = Environment.HEIGHT/2;
-        x = Environment.WIDTH - PongView.PADDLE_WIDTH - PADDING;
+        x = Environment.WIDTH - PongView.PADDLE_WIDTH * 3;
     }
     public Paddle(OpponentStrategy strategy){
         this.strategy = strategy;
@@ -43,8 +43,8 @@ public class Paddle {
         if (y < 0){
             y = 0;
         }
-        if (y > Environment.HEIGHT){
-            y = 420;
+        if (y > Environment.HEIGHT - PongView.PADDLE_HEIGHT){
+            y = Environment.HEIGHT - PongView.PADDLE_HEIGHT;
         }
     }
 

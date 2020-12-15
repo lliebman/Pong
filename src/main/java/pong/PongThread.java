@@ -1,7 +1,7 @@
 package pong;
 
 public class PongThread extends Thread {
-    private static final int DELAY_MS = 80;
+    private static final int DELAY_MS = 20;
 
     private final Environment environment;
     private final PongView view;
