@@ -59,6 +59,33 @@ public class Environment {
 
     private boolean moveBall() {
         ball.move();
-        return !ball.checkOutOfBounds();
+        checkPaddleCollide();
+        checkWallCollide();
+        return !checkBallOutOfBounds();
+    }
+
+    public boolean checkBallOutOfBounds() { //aka did someone score a point
+        return ball.getX() == 0 || ball.getX() == Environment.WIDTH;
+    }
+
+    private void checkWallCollide() {
+        if (ball.getY() >= Environment.HEIGHT - ball.MID_OF_BALL || ball.getY() <= ball.MID_OF_BALL) {
+            ball.toggleVelY();
+        }
+    }
+
+    private void checkPaddleCollide() {
+        if ((ball.getX() >= user.getX() &&
+                ball.getY() >= user.getY() &&
+                ball.getY() <= user.getY() + PongView.PADDLE_HEIGHT)
+
+                ||
+
+                (ball.getX() <= opponent.getX() + PongView.PADDLE_WIDTH &&
+                        ball.getY() >= opponent.getY() &&
+                        ball.getY() <= opponent.getY() + PongView.PADDLE_HEIGHT)) {
+
+            ball.toggleVelX();
+        }
     }
 }
