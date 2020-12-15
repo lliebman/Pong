@@ -37,10 +37,6 @@ public class Environment {
 
     private boolean moveBall() {
         ball.move();
-        //if ball gets past a paddle, update score
-        //if(ball.getX() > user.getX()) {
-
-        //}
-        return ball.checkOutOfBounds();
+        return !ball.checkOutOfBounds();
     }
 }
