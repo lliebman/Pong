@@ -31,7 +31,7 @@ public class Paddle {
         }else if (downAccel)
         {
             yVel += 2;
-        } else if(!upAccel && !downAccel){
+        } else {
             //an arbitrary number. it just needed to be < 0
             double GRAVITY = 0.94;
             yVel *= GRAVITY;
