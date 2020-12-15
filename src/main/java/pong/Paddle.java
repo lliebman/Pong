@@ -10,7 +10,7 @@ public class Paddle {
 
     public Paddle(){
         y = Environment.HEIGHT/2;
-        x = Environment.WIDTH - PongView.PADDLE_WIDTH - PADDING;
+        x = Environment.WIDTH - PongView.PADDLE_WIDTH * 3;
     }
     public Paddle(OpponentStrategy strategy){
         this.strategy = strategy;
