@@ -43,8 +43,8 @@ public class Paddle {
         if (y < 0){
             y = 0;
         }
-        if (y > Environment.HEIGHT){
-            y = 420;
+        if (y > Environment.HEIGHT - PongView.PADDLE_HEIGHT){
+            y = Environment.HEIGHT - PongView.PADDLE_HEIGHT;
         }
     }
 

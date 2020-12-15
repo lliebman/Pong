@@ -64,8 +64,9 @@ public class Ball {
     }
 
     private void checkWallCollide() {
-        if (this.y >= PongFrame.HEIGHT - MID_OF_BALL || this.y <= MID_OF_BALL) {
+        if (this.y <= PongFrame.HEIGHT - MID_OF_BALL || this.y >= MID_OF_BALL) {
             velY *= -1;
+
         }
     }
 
