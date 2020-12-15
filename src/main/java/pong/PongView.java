@@ -23,9 +23,6 @@ public class PongView extends JComponent {
         paintUserPaddle(g);
         paintCompPaddle(g);
         paintBall(g);
-
-        //scoreboard?
-        //demarcation lines?
     }
 
     private void paintBackground(Graphics g) {
