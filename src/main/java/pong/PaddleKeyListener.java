@@ -15,8 +15,8 @@ public class PaddleKeyListener extends KeyAdapter {
     public void keyPressed(KeyEvent e) {
         super.keyPressed(e);
         switch (e.getKeyCode()) {
-           //case KeyEvent.VK_DOWN -> paddle.move(Direction.South);
-            //case KeyEvent.VK_UP -> paddle.move(Direction.North);
+           case KeyEvent.VK_DOWN -> paddle.setDownAccel(true);
+           case KeyEvent.VK_UP -> paddle.setUpAccel(true);
         }
     }
 }
