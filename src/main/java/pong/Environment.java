@@ -14,9 +14,10 @@ public class Environment {
         this.ball = ball;
     }
 
-    public boolean advance() {
+    public boolean advance() throws Exception {
         if (moveBall()) {
             user.move();
+            opponent.getStrategy().directPaddle(opponent, ball);
             opponent.move();
             return true;
         }
@@ -25,6 +26,6 @@ public class Environment {
 
     private boolean moveBall() {
         ball.move();
-        return ball.checkOutOfBounds();
+        return !ball.checkOutOfBounds();
     }
 }

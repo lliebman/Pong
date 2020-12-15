@@ -12,7 +12,12 @@ public class PongThread extends Thread {
     }
 
     public void run() {
-        while (environment.advance()) {
+        while (true) {
+            try {
+                if (!environment.advance()) break;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             view.repaint();
             try {
                 Thread.sleep(DELAY_MS);
