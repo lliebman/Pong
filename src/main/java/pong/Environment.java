@@ -52,9 +52,15 @@ public class Environment {
             user.move();
             opponent.move();
             opponent.getStrategy().directPaddle(opponent, ball);
-            return true;
+        } else { //point has been scored
+            if (ball.getX() > user.getX()) {
+                compScored();
+            } else {
+                userScored();
+            }
+            ball.reposition();
         }
-        return false;
+        return true;
     }
 
     private boolean moveBall() {
@@ -65,7 +71,7 @@ public class Environment {
     }
 
     public boolean checkBallOutOfBounds() { //aka did someone score a point
-        return ball.getX() == 0 || ball.getX() == Environment.WIDTH;
+        return ball.getX() > user.getX() + ball.MID_OF_BALL || ball.getX() < opponent.getX();
     }
 
     private void checkWallCollide() {

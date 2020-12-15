@@ -12,8 +12,7 @@ public class Ball {
 
     public Ball(Paddle userPaddle, Paddle compPaddle) {
         //first position - middle of the board.
-        x = Environment.WIDTH / 2;
-        y = Environment.HEIGHT / 2;
+        reposition();
 
         //random velocity to start the game off
         velY = getRandomVelocity();
@@ -22,9 +21,9 @@ public class Ball {
         this.compPaddle = compPaddle;
     }
 
-    public Ball(int x, int y) {
-        this.x = x;
-        this.y = y;
+    public void reposition() {
+        x = Environment.WIDTH / 2;
+        y = Environment.HEIGHT / 2;
     }
 
     public double getVelX() {
