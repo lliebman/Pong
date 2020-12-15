@@ -49,8 +49,8 @@ public class PongView extends JComponent {
 
     private void paintBall(Graphics g) {
         g.setColor(Color.white);
-        int x = environment.getBall().getX() - 10;
-        int y = environment.getBall().getY() - 10;
+        int x = environment.getBall().getX() - (BALL_WIDTH/2);
+        int y = environment.getBall().getY() - (BALL_HEIGHT/2);
         g.fillOval(x, y, BALL_WIDTH, BALL_HEIGHT);
     }
 }
