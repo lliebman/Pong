@@ -1,8 +1,6 @@
 package pong;
 
 public class Ball {
-    private Paddle userPaddle;
-    private Paddle compPaddle;
 
     private double x;
     private double y;
@@ -10,15 +8,13 @@ public class Ball {
     private double velY;
     public final int MID_OF_BALL = PongView.BALL_WIDTH / 2;
 
-    public Ball(Paddle userPaddle, Paddle compPaddle) {
+    public Ball() {
         //first position - middle of the board.
         reposition();
 
         //random velocity to start the game off
         velY = getRandomVelocity();
         velX = getRandomVelocity();
-        this.userPaddle = userPaddle;
-        this.compPaddle = compPaddle;
     }
 
     public void reposition() {
