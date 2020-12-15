@@ -1,20 +1,27 @@
 package pong;
 
 public class Paddle {
-    private double x, y, yVel;
+    private final double x;
+    private double y;
+    private double yVel;
     private final int PADDING = 10;
     private boolean upAccel, downAccel;
-    //an arbitrary number. it just needed to be < 0
-    private final double GRAVITY = 0.94;
-    public Paddle(Player player){
+    private OpponentStrategy strategy;
+
+    public Paddle(){
         y = Environment.HEIGHT/2;
-        if (player.equals(Player.USER)){
-            //set human paddle to right side of board
-            x = Environment.WIDTH - PongView.PADDLE_WIDTH - PADDING;
-        } else {
-            //set computer paddle to left side of board
-            x = PongView.PADDLE_WIDTH + PADDING;
-        }
+        x = Environment.WIDTH - PongView.PADDLE_WIDTH - PADDING;
+    }
+    public Paddle(OpponentStrategy strategy){
+        this.strategy = strategy;
+        y = Environment.HEIGHT/2;
+        x = PongView.PADDLE_WIDTH + PADDING;
+    }
+
+    public OpponentStrategy getStrategy() throws Exception {
+        if (strategy != null) {
+            return strategy;
+        } throw new Exception("No strategy found");
     }
 
     public void move(){
@@ -25,6 +32,8 @@ public class Paddle {
         {
             yVel += 2;
         } else if(!upAccel && !downAccel){
+            //an arbitrary number. it just needed to be < 0
+            double GRAVITY = 0.94;
             yVel *= GRAVITY;
         }
 
