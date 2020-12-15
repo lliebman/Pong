@@ -10,7 +10,6 @@ public class PongMain {
         PaddleKeyListener  keyListener = new PaddleKeyListener(userPaddle);
         PongThread thread = new PongThread(environment, pongView);
         thread.start();
-        new PongFrame(pongView, environment, keyListener).setVisible(true);
-
+        new PongFrame(pongView, keyListener, environment).setVisible(true);
     }
 }

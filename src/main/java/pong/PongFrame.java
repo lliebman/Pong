@@ -4,10 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 
 public class PongFrame extends JFrame {
-    private JLabel scoreboard;
-    private Environment environment;
-
-    public PongFrame(PongView pongView, Environment environment, PaddleKeyListener paddleListener) throws HeadlessException {
+        JPanel scorePanel;
+        JLabel userScore, compScore;
+        private Environment environment;
+    public PongFrame(PongView pongView, PaddleKeyListener paddleListener, Environment environment) throws HeadlessException {
         super();
         this.environment = environment;
         setSize((int) Environment.WIDTH, (int) Environment.HEIGHT + 30);
@@ -15,11 +15,32 @@ public class PongFrame extends JFrame {
         setTitle("Pong");
         setLayout(new BorderLayout());
 
-        scoreboard = new JLabel();
-        scoreboard.setText("Computer: " + environment.getCompScore() + " User: " + environment.getUserScore());
-
+        this.environment = environment;
         add(pongView, BorderLayout.CENTER);
-        add(scoreboard, BorderLayout.SOUTH);
+        addScoreBoard();
         addKeyListener(paddleListener);
+    }
+
+    private void addScoreBoard() {
+        scorePanel = new JPanel();
+        scorePanel.setOpaque(true);
+        scorePanel.setBackground(Color.BLACK);
+
+        userScore = new JLabel();
+        userScore.setOpaque(true);
+        userScore.setBackground(Color.BLACK);
+        userScore.setForeground(Color.WHITE);
+        userScore.setText(String.valueOf(environment.getUserScore()));
+
+        compScore = new JLabel();
+        compScore.setOpaque(true);
+        compScore.setBackground(Color.BLACK);
+        compScore.setForeground(Color.WHITE);
+        compScore.setText(String.valueOf(environment.getCompScore()));
+
+        scorePanel.add(compScore);
+        scorePanel.add(userScore);
+
+        add(scorePanel, BorderLayout.SOUTH);
     }
 }
