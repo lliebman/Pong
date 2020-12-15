@@ -13,4 +13,18 @@ public class Environment {
         this.opponent = opponent;
         this.ball = ball;
     }
+
+    public boolean advance() {
+        if (moveBall()) {
+            user.move();
+            opponent.move();
+            return true;
+        }
+        return false;
+    }
+
+    private boolean moveBall() {
+        ball.move();
+        return ball.checkOutOfBounds();
+    }
 }
