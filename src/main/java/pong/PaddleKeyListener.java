@@ -15,8 +15,13 @@ public class PaddleKeyListener extends KeyAdapter {
     public void keyPressed(KeyEvent e) {
         super.keyPressed(e);
         switch (e.getKeyCode()) {
-           case KeyEvent.VK_DOWN -> paddle.setDownAccel(true);
-           case KeyEvent.VK_UP -> paddle.setUpAccel(true);
+           case KeyEvent.VK_DOWN -> {
+               paddle.setDownAccel(true);
+               paddle.setUpAccel(false);}
+           case KeyEvent.VK_UP -> {
+               paddle.setUpAccel(true);
+               paddle.setDownAccel(false);
+           }
         }
     }
 }
