@@ -35,10 +35,23 @@ public class Environment {
         this.compScore++;
     }
 
-    public boolean advance() {
+    public Ball getBall() {
+        return ball;
+    }
+
+    public Paddle getUser() {
+        return user;
+    }
+
+    public Paddle getOpponent() {
+        return opponent;
+    }
+
+    public boolean advance() throws Exception {
         if (moveBall()) {
             user.move();
             opponent.move();
+            opponent.getStrategy().directPaddle(opponent, ball);
             return true;
         }
         return false;
@@ -46,6 +59,6 @@ public class Environment {
 
     private boolean moveBall() {
         ball.move();
-        return ball.checkOutOfBounds();
+        return !ball.checkOutOfBounds();
     }
 }

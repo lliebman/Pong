@@ -11,8 +11,7 @@ public class Paddle {
     //user paddle constructor
     public Paddle(){
         y = Environment.HEIGHT/2;
-        //right of screen
-        x = Environment.WIDTH - PongView.PADDLE_WIDTH - PADDING;
+        x = Environment.WIDTH - PongView.PADDLE_WIDTH * 3;
     }
     //computer paddle constructor
     public Paddle(OpponentStrategy strategy){
@@ -35,7 +34,7 @@ public class Paddle {
         }else if (downAccel)
         {
             yVel += 2;
-        } else if(!upAccel && !downAccel){
+        } else {
             //an arbitrary number. it just needed to be < 0
             double GRAVITY = 0.94;
             yVel *= GRAVITY;
@@ -47,8 +46,8 @@ public class Paddle {
         if (y < 0){
             y = 0;
         }
-        if (y > Environment.HEIGHT){
-            y = 420;
+        if (y > Environment.HEIGHT - PongView.PADDLE_HEIGHT){
+            y = Environment.HEIGHT - PongView.PADDLE_HEIGHT;
         }
     }
 
