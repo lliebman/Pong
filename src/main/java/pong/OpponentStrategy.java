@@ -12,13 +12,13 @@ public class OpponentStrategy {
         this.ball = ball;
         this.velX = ball.getVelX();
         this.velY = ball.getVelY();
-        if (ball.getVelX() > 0) { //ball headed away from paddle
+        if (ball.getVelX() >= 0) { //ball headed away from paddle
             paddle.setDownAccel(false);
             paddle.setUpAccel(false);
             return;
         }
         int prediction = getBallPrediction();
-        if (prediction > paddle.getY()) {
+        if (prediction < paddle.getY()) {
             paddle.setUpAccel(true);
             paddle.setDownAccel(false);
         } else {
@@ -39,6 +39,7 @@ public class OpponentStrategy {
             x += velX;
             y += velY;
         }
+        System.out.println("return prediction: " + y);
         return (int) y;
     }
 
