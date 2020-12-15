@@ -8,13 +8,17 @@ public class Paddle {
     private boolean upAccel, downAccel;
     private OpponentStrategy strategy;
 
+    //user paddle constructor
     public Paddle(){
         y = Environment.HEIGHT/2;
+        //right of screen
         x = Environment.WIDTH - PongView.PADDLE_WIDTH - PADDING;
     }
+    //computer paddle constructor
     public Paddle(OpponentStrategy strategy){
         this.strategy = strategy;
         y = Environment.HEIGHT/2;
+        //left of screen
         x = PongView.PADDLE_WIDTH + PADDING;
     }
 

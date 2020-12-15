@@ -8,10 +8,31 @@ public class Environment {
     private final Paddle opponent;
     private final Ball ball;
 
+    private int userScore;
+    private int compScore;
+
     public Environment(Paddle user, Paddle opponent, Ball ball) {
         this.user = user;
         this.opponent = opponent;
         this.ball = ball;
+        userScore = 0;
+        compScore = 0;
+    }
+
+    public int getUserScore() {
+        return userScore;
+    }
+
+    public void userScored() {
+        this.userScore++;
+    }
+
+    public int getCompScore() {
+        return compScore;
+    }
+
+    public void compScored() {
+        this.compScore++;
     }
 
     public boolean advance() {
