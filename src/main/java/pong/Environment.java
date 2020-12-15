@@ -71,7 +71,7 @@ public class Environment {
     }
 
     public boolean checkBallOutOfBounds() { //aka did someone score a point
-        return ball.getX() > user.getX() + ball.MID_OF_BALL || ball.getX() < opponent.getX();
+        return ball.getX() > user.getX() + ball.MID_OF_BALL || ball.getX() < opponent.getX() + ball.MID_OF_BALL;
     }
 
     private void checkWallCollide() {
