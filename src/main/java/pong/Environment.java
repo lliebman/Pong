@@ -6,7 +6,7 @@ public class Environment {
 
     private final Paddle user;
     private final Paddle opponent;
-    private final Ball ball;
+    private Ball ball;
 
     public Environment(Paddle user, Paddle opponent, Ball ball) {
         this.user = user;
@@ -27,17 +27,26 @@ public class Environment {
     }
 
     public boolean advance() throws Exception {
-        if (moveBall()) {
+        ball.move();
+        if (!ball.checkOutOfBounds()) {
             user.move();
             opponent.getStrategy().directPaddle(opponent, ball);
             opponent.move();
+            updatePoints();
             return true;
         }
-        return false;
+        else {
+            ball.reposition();
+            return false;
+        }
     }
 
-    private boolean moveBall() {
-        ball.move();
-        return !ball.checkOutOfBounds();
+    private void updatePoints() {
+        if(ball.compSide()) {
+
+        }
+        if(ball.userSide()) {
+
+        }
     }
 }
