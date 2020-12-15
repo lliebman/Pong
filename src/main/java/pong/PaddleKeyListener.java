@@ -24,4 +24,13 @@ public class PaddleKeyListener extends KeyAdapter {
            }
         }
     }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        if (e.getKeyCode() == KeyEvent.VK_UP) {
+            paddle.setUpAccel(false);
+        } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+            paddle.setDownAccel(false);
+        }
+    }
 }
