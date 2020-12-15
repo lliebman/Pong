@@ -39,7 +39,7 @@ public class OpponentStrategy {
             x += velX;
             y += velY;
         }
-        System.out.println("return prediction: " + y);
+        
         return (int) y;
     }
 

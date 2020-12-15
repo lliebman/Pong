@@ -12,8 +12,7 @@ public class Ball {
 
     public Ball(Paddle userPaddle, Paddle compPaddle) {
         //first position - middle of the board.
-        x = Environment.WIDTH / 2;
-        y = Environment.HEIGHT / 2;
+        reposition();
 
         //random velocity to start the game off
         velY = getRandomVelocity();
@@ -22,9 +21,9 @@ public class Ball {
         this.compPaddle = compPaddle;
     }
 
-    public Ball(int x, int y) {
-        this.x = x;
-        this.y = y;
+    public void reposition() {
+        x = Environment.WIDTH / 2;
+        y = Environment.HEIGHT / 2;
     }
 
     public double getVelX() {
@@ -33,6 +32,14 @@ public class Ball {
 
     public double getVelY() {
         return velY;
+    }
+
+    public void toggleVelY() {
+        velY = -velY;
+    }
+
+    public void toggleVelX() {
+        velX = -velX;
     }
 
     private double getRandomVelocity() {
@@ -55,30 +62,7 @@ public class Ball {
     public void move() {
         x += velX;
         y += velY;
-        checkPaddleCollide();
-        checkWallCollide();
     }
 
-    public boolean checkOutOfBounds() { //aka did someone score a point
-        return this.x == 0 || this.x == Environment.WIDTH;
-    }
 
-    private void checkWallCollide() {
-        if (this.y >= Environment.HEIGHT - MID_OF_BALL || this.y <= MID_OF_BALL) {
-            velY = -velY;
-
-        }
-    }
-
-    private void checkPaddleCollide() {
-        if ((this.x >= userPaddle.getX() &&
-                this.y >= userPaddle.getY() &&
-                this.y <= userPaddle.getY() + PongView.PADDLE_HEIGHT)
-                ||
-                (this.x <= compPaddle.getX() + PongView.PADDLE_WIDTH &&
-                        this.y >= compPaddle.getY() &&
-                        this.y <= compPaddle.getY() + PongView.PADDLE_HEIGHT)) {
-            velX = -velX;
-        }
-    }
 }
