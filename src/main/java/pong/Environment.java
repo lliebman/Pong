@@ -14,6 +14,18 @@ public class Environment {
         this.ball = ball;
     }
 
+    public Ball getBall() {
+        return ball;
+    }
+
+    public Paddle getUser() {
+        return user;
+    }
+
+    public Paddle getOpponent() {
+        return opponent;
+    }
+
     public boolean advance() throws Exception {
         if (moveBall()) {
             user.move();
