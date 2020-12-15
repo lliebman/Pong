@@ -74,9 +74,7 @@ public class Ball {
         if ((this.x >= userPaddle.getX() &&
                 this.y >= userPaddle.getY() &&
                 this.y <= userPaddle.getY() + PongView.PADDLE_HEIGHT)
-
                 ||
-
                 (this.x <= compPaddle.getX() + PongView.PADDLE_WIDTH &&
                         this.y >= compPaddle.getY() &&
                         this.y <= compPaddle.getY() + PongView.PADDLE_HEIGHT)) {
