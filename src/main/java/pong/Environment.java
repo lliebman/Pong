@@ -14,6 +14,18 @@ public class Environment {
         this.ball = ball;
     }
 
+    public Ball getBall() {
+        return ball;
+    }
+
+    public Paddle getUser() {
+        return user;
+    }
+
+    public Paddle getOpponent() {
+        return opponent;
+    }
+
     public boolean advance() {
         if (moveBall()) {
             user.move();
@@ -25,6 +37,10 @@ public class Environment {
 
     private boolean moveBall() {
         ball.move();
+        //if ball gets past a paddle, update score
+        //if(ball.getX() > user.getX()) {
+
+        //}
         return ball.checkOutOfBounds();
     }
 }
