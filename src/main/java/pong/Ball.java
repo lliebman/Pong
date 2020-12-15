@@ -64,20 +64,25 @@ public class Ball {
     }
 
     private void checkWallCollide() {
-        if (this.y >= PongFrame.HEIGHT - MID_OF_BALL || this.y <= MID_OF_BALL) {
-            velY *= -1;
+
+        if (this.y >= Environment.HEIGHT - MID_OF_BALL || this.y <= MID_OF_BALL) {
+            velY = -velY;
+
         }
     }
 
     private void checkPaddleCollide() {
         //check for collision with (humanPaddle) OR (compPaddle)
-        if ((this.x >= userPaddle.getX() + PongView.PADDLE_WIDTH - MID_OF_BALL &&
+        if ((this.x == userPaddle.getX() &&
                 this.y >= userPaddle.getY() &&
-                this.y >= userPaddle.getY() + PongView.PADDLE_HEIGHT) ||
-                (this.x <= userPaddle.getX() + PongView.PADDLE_WIDTH - MID_OF_BALL &&
+                this.y <= userPaddle.getY() + PongView.PADDLE_HEIGHT)
+
+                ||
+
+                (this.x == userPaddle.getX() + PongView.PADDLE_WIDTH &&
                         this.y >= compPaddle.getY() &&
                         this.y <= compPaddle.getY() + PongView.PADDLE_HEIGHT)) {
-            velX *= -1;
+            velX = -velX;
         }
     }
 }
