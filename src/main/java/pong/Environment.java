@@ -6,7 +6,7 @@ public class Environment {
 
     private final Paddle user;
     private final Paddle opponent;
-    private Ball ball;
+    private final Ball ball;
 
     private int userScore;
     private int compScore;
@@ -48,26 +48,50 @@ public class Environment {
     }
 
     public boolean advance() throws Exception {
-        ball.move();
-        if (!ball.checkOutOfBounds()) {
+        if (moveBall()) {
             user.move();
-            opponent.getStrategy().directPaddle(opponent, ball);
             opponent.move();
-            updatePoints();
-            return true;
-        }
-        else {
+            opponent.getStrategy().directPaddle(opponent, ball);
+        } else { //point has been scored
+            if (ball.getX() > user.getX()) {
+                compScored();
+            } else {
+                userScored();
+            }
             ball.reposition();
-            return false;
+        }
+        return true;
+    }
+
+    private boolean moveBall() {
+        ball.move();
+        checkPaddleCollide();
+        checkWallCollide();
+        return !checkBallOutOfBounds();
+    }
+
+    public boolean checkBallOutOfBounds() { //aka did someone score a point
+        return ball.getX() > user.getX() + ball.MID_OF_BALL || ball.getX() < opponent.getX() + ball.MID_OF_BALL;
+    }
+
+    private void checkWallCollide() {
+        if (ball.getY() >= Environment.HEIGHT - ball.MID_OF_BALL || ball.getY() <= ball.MID_OF_BALL) {
+            ball.toggleVelY();
         }
     }
 
-    private void updatePoints() {
-        if(ball.compSide()) {
-            userScored();
-        }
-        if(ball.userSide()) {
-            compScored();
+    private void checkPaddleCollide() {
+        if ((ball.getX() >= user.getX() &&
+                ball.getY() >= user.getY() &&
+                ball.getY() <= user.getY() + PongView.PADDLE_HEIGHT)
+
+                ||
+
+                (ball.getX() <= opponent.getX() + PongView.PADDLE_WIDTH &&
+                        ball.getY() >= opponent.getY() &&
+                        ball.getY() <= opponent.getY() + PongView.PADDLE_HEIGHT)) {
+
+            ball.toggleVelX();
         }
     }
 }

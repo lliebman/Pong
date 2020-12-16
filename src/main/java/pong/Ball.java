@@ -1,8 +1,6 @@
 package pong;
 
 public class Ball {
-    private Paddle userPaddle;
-    private Paddle compPaddle;
 
     private double x;
     private double y;
@@ -10,15 +8,13 @@ public class Ball {
     private double velY;
     public final int MID_OF_BALL = PongView.BALL_WIDTH / 2;
 
-    public Ball(Paddle userPaddle, Paddle compPaddle) {
+    public Ball() {
         //first position - middle of the board.
         reposition();
 
         //random velocity to start the game off
         velY = getRandomVelocity();
         velX = getRandomVelocity();
-        this.userPaddle = userPaddle;
-        this.compPaddle = compPaddle;
     }
 
     public void reposition() {
@@ -32,6 +28,14 @@ public class Ball {
 
     public double getVelY() {
         return velY;
+    }
+
+    public void toggleVelY() {
+        velY = -velY;
+    }
+
+    public void toggleVelX() {
+        velX = -velX;
     }
 
     private double getRandomVelocity() {
@@ -54,38 +58,5 @@ public class Ball {
     public void move() {
         x += velX;
         y += velY;
-        checkPaddleCollide();
-        checkWallCollide();
-    }
-
-    public boolean checkOutOfBounds() { //need to restart ball position in middle
-        return this.x == 0 || this.x == Environment.WIDTH;
-    }
-
-    public boolean compSide() {
-        return this.x == 0;
-    }
-
-    public boolean userSide() {
-        return this.x == Environment.WIDTH;
-    }
-
-    private void checkWallCollide() {
-        if (this.y >= Environment.HEIGHT - MID_OF_BALL || this.y <= MID_OF_BALL) {
-            velY = -velY;
-
-        }
-    }
-
-    private void checkPaddleCollide() {
-        if ((this.x >= userPaddle.getX() &&
-                this.y >= userPaddle.getY() &&
-                this.y <= userPaddle.getY() + PongView.PADDLE_HEIGHT)
-                ||
-                (this.x <= compPaddle.getX() + PongView.PADDLE_WIDTH &&
-                        this.y >= compPaddle.getY() &&
-                        this.y <= compPaddle.getY() + PongView.PADDLE_HEIGHT)) {
-            velX = -velX;
-        }
     }
 }
