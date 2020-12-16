@@ -4,7 +4,8 @@ public class Paddle {
     private final double x;
     private double y;
     private double yVel;
-    private final int PADDING = 10;
+    private final int SIDE_PADDING = 10;
+    private final int BOTTOM_PADDING = 30;
     private boolean upAccel, downAccel;
     private OpponentStrategy strategy;
 
@@ -18,7 +19,7 @@ public class Paddle {
         this.strategy = strategy;
         y = Environment.HEIGHT/2;
         //left of screen
-        x = PongView.PADDLE_WIDTH + PADDING;
+        x = PongView.PADDLE_WIDTH + SIDE_PADDING;
     }
 
     public OpponentStrategy getStrategy() throws Exception {
@@ -46,8 +47,8 @@ public class Paddle {
         if (y < 0){
             y = 0;
         }
-        if (y > Environment.HEIGHT - PongView.PADDLE_HEIGHT){
-            y = Environment.HEIGHT - PongView.PADDLE_HEIGHT;
+        if (y > Environment.HEIGHT - PongView.PADDLE_HEIGHT - BOTTOM_PADDING){
+            y = Environment.HEIGHT - PongView.PADDLE_HEIGHT - BOTTOM_PADDING;
         }
     }
 

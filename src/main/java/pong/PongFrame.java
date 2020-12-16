@@ -5,8 +5,9 @@ import java.awt.*;
 
 public class PongFrame extends JFrame {
         JPanel scorePanel;
-        JLabel userScore, compScore;
+        public JLabel userScore, compScore;
         private Environment environment;
+
     public PongFrame(PongView pongView, PaddleKeyListener paddleListener, Environment environment) throws HeadlessException {
         super();
         this.environment = environment;

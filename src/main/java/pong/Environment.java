@@ -3,6 +3,7 @@ package pong;
 public class Environment {
     public static final double WIDTH = 700;
     public static final double HEIGHT = 500;
+    public static final double BOTTOM_PADDING = 30;
 
     private final Paddle user;
     private final Paddle opponent;
@@ -75,7 +76,7 @@ public class Environment {
     }
 
     private void checkWallCollide() {
-        if (ball.getY() >= Environment.HEIGHT - ball.MID_OF_BALL || ball.getY() <= ball.MID_OF_BALL) {
+        if (ball.getY() >= Environment.HEIGHT - BOTTOM_PADDING - ball.MID_OF_BALL || ball.getY() <= ball.MID_OF_BALL) {
             ball.toggleVelY();
         }
     }
