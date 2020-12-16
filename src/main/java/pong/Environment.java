@@ -51,8 +51,8 @@ public class Environment {
     public boolean advance() throws Exception {
         if (moveBall()) {
             user.move();
-            opponent.move();
             opponent.getStrategy().directPaddle(opponent, ball);
+            opponent.move();
         } else { //point has been scored
             if (ball.getX() > user.getX()) {
                 compScored();
