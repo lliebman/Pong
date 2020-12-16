@@ -23,9 +23,6 @@ public class PongView extends JComponent {
         paintUserPaddle(g);
         paintCompPaddle(g);
         paintBall(g);
-
-        //scoreboard?
-        //demarcation lines?
     }
 
     private void paintBackground(Graphics g) {
@@ -49,8 +46,8 @@ public class PongView extends JComponent {
 
     private void paintBall(Graphics g) {
         g.setColor(Color.white);
-        int x = environment.getBall().getX() - 10;
-        int y = environment.getBall().getY() - 10;
+        int x = environment.getBall().getX() - (BALL_WIDTH/2);
+        int y = environment.getBall().getY() - (BALL_HEIGHT/2);
         g.fillOval(x, y, BALL_WIDTH, BALL_HEIGHT);
     }
 }

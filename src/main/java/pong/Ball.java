@@ -59,6 +59,4 @@ public class Ball {
         x += velX;
         y += velY;
     }
-
-
 }

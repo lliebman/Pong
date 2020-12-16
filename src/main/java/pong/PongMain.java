@@ -12,6 +12,5 @@ public class PongMain {
         frame.setVisible(true);
         PongThread thread = new PongThread(environment, pongView, frame);
         thread.start();
-
     }
 }

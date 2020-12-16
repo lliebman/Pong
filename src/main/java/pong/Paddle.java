@@ -43,7 +43,7 @@ public class Paddle {
 
         y += yVel;
 
-        //make sure paddle doesn't go off the sides
+        //make sure paddle doesn't go past the top or bottom
         if (y < 0){
             y = 0;
         }
