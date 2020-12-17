@@ -20,9 +20,12 @@ public class PongThread extends Thread {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+
             view.repaint();
-            frame.compScore.setText(Integer.toString(environment.getCompScore()));
-            frame.userScore.setText(Integer.toString(environment.getUserScore()));
+            if(environment.hasScored()) {
+                frame.compScore.setText(Integer.toString(environment.getCompScore()));
+                frame.userScore.setText(Integer.toString(environment.getUserScore()));
+            }
             try {
                 Thread.sleep(DELAY_MS);
             } catch (InterruptedException e) {

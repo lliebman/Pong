@@ -1,5 +1,7 @@
 package pong;
 
+import java.util.Random;
+
 public class Ball {
 
     private double x;
@@ -22,14 +24,6 @@ public class Ball {
         y = Environment.HEIGHT / 2;
     }
 
-    public double getVelX() {
-        return velX;
-    }
-
-    public double getVelY() {
-        return velY;
-    }
-
     public void toggleVelY() {
         velY = -velY;
     }
@@ -41,11 +35,9 @@ public class Ball {
     private double getRandomVelocity() {
         //randSpeed can be any number 2-4
         double randSpeed = (Math.random() * 3 + 2);
-        double randDirection = Math.random() * 2;
-        //randDirection will be assigned as either 1 or -1
-        randDirection = randDirection >= 1.0? 1.0: -1.0;
-
-        return randSpeed * randDirection;
+        Random random = new Random();
+        boolean randDirection = random.nextBoolean();
+        return randDirection ? randSpeed : (randSpeed*-1);
     }
     public int getX() {
         return (int) x;
