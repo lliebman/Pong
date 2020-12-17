@@ -11,6 +11,7 @@ public class Environment {
 
     private int userScore;
     private int compScore;
+    private boolean scored = false;
 
     public Environment(Paddle user, Paddle opponent, Ball ball) {
         this.user = user;
@@ -18,14 +19,20 @@ public class Environment {
         this.ball = ball;
         userScore = 0;
         compScore = 0;
+
     }
 
     public int getUserScore() {
         return userScore;
     }
 
+    public boolean hasScored() {
+        return scored;
+    }
+
     public void userScored() {
         this.userScore++;
+        scored = true;
     }
 
     public int getCompScore() {
@@ -34,6 +41,7 @@ public class Environment {
 
     public void compScored() {
         this.compScore++;
+        scored = true;
     }
 
     public Ball getBall() {
@@ -53,9 +61,11 @@ public class Environment {
             user.move();
             opponent.getStrategy().directPaddle(opponent, ball);
             opponent.move();
+            scored = false;
         } else { //point has been scored
             if (ball.getX() > user.getX()) {
                 compScored();
+
             } else {
                 userScored();
             }
