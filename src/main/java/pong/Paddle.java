@@ -1,5 +1,6 @@
 package pong;
-
+//Resource:
+//https://www.youtube.com/watch?v=xIqeK2hzx1I
 public class Paddle {
     private final double x;
     private double y;

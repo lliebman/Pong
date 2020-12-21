@@ -1,6 +1,10 @@
 package pong;
-
+//Resource:
+//https://www.youtube.com/watch?v=xIqeK2hzx1I
 import java.util.Random;
+
+import static pong.Environment.BOTTOM_PADDING;
+import static pong.Environment.HEIGHT;
 
 public class Ball {
 
@@ -21,7 +25,7 @@ public class Ball {
 
     public void reposition() {
         x = Environment.WIDTH / 2;
-        y = Environment.HEIGHT / 2;
+        y = HEIGHT / 2;
     }
 
     public void toggleVelY() {
@@ -50,5 +54,28 @@ public class Ball {
     public void move() {
         x += velX;
         y += velY;
+    }
+    public void checkPaddleCollide(Paddle user, Paddle opponent){
+        if ((this.getX() >= user.getX() &&
+                this.getY() >= user.getY() &&
+                this.getY() <= user.getY() + PongView.PADDLE_HEIGHT)
+
+                ||
+
+                (this.getX() <= opponent.getX() + PongView.PADDLE_WIDTH &&
+                        this.getY() >= opponent.getY() &&
+                        this.getY() <= opponent.getY() + PongView.PADDLE_HEIGHT)) {
+
+            this.toggleVelX();
+        }
+    }
+    public boolean checkBallOutOfBounds(Paddle user, Paddle opponent) { //aka did someone score a point
+        return this.getX() > user.getX() + this.MID_OF_BALL || this.getX() < opponent.getX() + this.MID_OF_BALL;
+    }
+
+    public void checkWellCollide(){
+        if (this.getY() >= HEIGHT - BOTTOM_PADDING - this.MID_OF_BALL || this.getY() <= this.MID_OF_BALL) {
+            this.toggleVelY();
+        }
     }
 }
