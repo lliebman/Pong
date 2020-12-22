@@ -11,7 +11,6 @@ public class PongView extends JComponent {
     public static final int PADDLE_WIDTH = 20;
     private final Environment environment;
 
-
     public PongView(Environment environment) {
         this.environment = environment;
     }
@@ -51,5 +50,3 @@ public class PongView extends JComponent {
         g.fillOval(x, y, BALL_WIDTH, BALL_HEIGHT);
     }
 }
-
-

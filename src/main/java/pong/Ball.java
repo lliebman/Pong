@@ -59,21 +59,19 @@ public class Ball {
         if ((this.getX() >= user.getX() &&
                 this.getY() >= user.getY() &&
                 this.getY() <= user.getY() + PongView.PADDLE_HEIGHT)
-
                 ||
-
                 (this.getX() <= opponent.getX() + PongView.PADDLE_WIDTH &&
                         this.getY() >= opponent.getY() &&
                         this.getY() <= opponent.getY() + PongView.PADDLE_HEIGHT)) {
-
             this.toggleVelX();
         }
     }
+
     public boolean checkBallOutOfBounds(Paddle user, Paddle opponent) { //aka did someone score a point
         return this.getX() > user.getX() + this.MID_OF_BALL || this.getX() < opponent.getX() + this.MID_OF_BALL;
     }
 
-    public void checkWellCollide(){
+    public void checkWallCollide(){
         if (this.getY() >= HEIGHT - BOTTOM_PADDING - this.MID_OF_BALL || this.getY() <= this.MID_OF_BALL) {
             this.toggleVelY();
         }

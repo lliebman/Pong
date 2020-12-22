@@ -19,7 +19,6 @@ public class Environment {
         this.ball = ball;
         userScore = 0;
         compScore = 0;
-
     }
 
     public int getUserScore() {
@@ -65,7 +64,6 @@ public class Environment {
         } else { //point has been scored
             if (ball.getX() > user.getX()) {
                 compScored();
-
             } else {
                 userScored();
             }
@@ -77,9 +75,7 @@ public class Environment {
     private boolean moveBall() {
         ball.move();
         ball.checkPaddleCollide(user, opponent);
-        ball.checkWellCollide();
+        ball.checkWallCollide();
         return !ball.checkBallOutOfBounds(user, opponent);
     }
-
-
 }
