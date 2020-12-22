@@ -1,4 +1,10 @@
 package pong;
+//Resource:
+//https://www.youtube.com/watch?v=xIqeK2hzx1I
+import java.util.Random;
+
+import static pong.Environment.BOTTOM_PADDING;
+import static pong.Environment.HEIGHT;
 
 public class Ball {
 
@@ -19,15 +25,7 @@ public class Ball {
 
     public void reposition() {
         x = Environment.WIDTH / 2;
-        y = Environment.HEIGHT / 2;
-    }
-
-    public double getVelX() {
-        return velX;
-    }
-
-    public double getVelY() {
-        return velY;
+        y = HEIGHT / 2;
     }
 
     public void toggleVelY() {
@@ -41,11 +39,9 @@ public class Ball {
     private double getRandomVelocity() {
         //randSpeed can be any number 2-4
         double randSpeed = (Math.random() * 3 + 2);
-        double randDirection = Math.random() * 2;
-        //randDirection will be assigned as either 1 or -1
-        randDirection = randDirection >= 1.0? 1.0: -1.0;
-
-        return randSpeed * randDirection;
+        Random random = new Random();
+        boolean randDirection = random.nextBoolean();
+        return randDirection ? randSpeed : (randSpeed*-1);
     }
     public int getX() {
         return (int) x;
@@ -58,5 +54,26 @@ public class Ball {
     public void move() {
         x += velX;
         y += velY;
+    }
+    public void checkPaddleCollide(Paddle user, Paddle opponent){
+        if ((this.getX() >= user.getX() &&
+                this.getY() >= user.getY() &&
+                this.getY() <= user.getY() + PongView.PADDLE_HEIGHT)
+                ||
+                (this.getX() <= opponent.getX() + PongView.PADDLE_WIDTH &&
+                        this.getY() >= opponent.getY() &&
+                        this.getY() <= opponent.getY() + PongView.PADDLE_HEIGHT)) {
+            this.toggleVelX();
+        }
+    }
+
+    public boolean checkBallOutOfBounds(Paddle user, Paddle opponent) { //aka did someone score a point
+        return this.getX() > user.getX() + this.MID_OF_BALL || this.getX() < opponent.getX() + this.MID_OF_BALL;
+    }
+
+    public void checkWallCollide(){
+        if (this.getY() >= HEIGHT - BOTTOM_PADDING - this.MID_OF_BALL || this.getY() <= this.MID_OF_BALL) {
+            this.toggleVelY();
+        }
     }
 }

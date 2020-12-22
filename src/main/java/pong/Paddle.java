@@ -1,5 +1,6 @@
 package pong;
-
+//Resource:
+//https://www.youtube.com/watch?v=xIqeK2hzx1I
 public class Paddle {
     private final double x;
     private double y;
@@ -14,6 +15,7 @@ public class Paddle {
         y = Environment.HEIGHT/2;
         x = Environment.WIDTH - PongView.PADDLE_WIDTH * 3;
     }
+
     //computer paddle constructor
     public Paddle(OpponentStrategy strategy){
         this.strategy = strategy;
@@ -40,9 +42,7 @@ public class Paddle {
             double GRAVITY = 0.94;
             yVel *= GRAVITY;
         }
-
         y += yVel;
-
         //make sure paddle doesn't go past the top or bottom
         if (y < 0){
             y = 0;

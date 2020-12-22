@@ -1,46 +1,19 @@
 package pong;
 
+import static pong.PongView.PADDLE_HEIGHT;
+
 public class OpponentStrategy {
 
-    Paddle paddle;
-    Ball ball;
-    double velX;
-    double velY;
-
     public void directPaddle(Paddle paddle, Ball ball) {
-        this.paddle = paddle;
-        this.ball = ball;
-        this.velX = ball.getVelX();
-        this.velY = ball.getVelY();
-        if (ball.getVelX() >= 0) { //ball headed away from paddle
-            paddle.setDownAccel(false);
-            paddle.setUpAccel(false);
-            return;
-        }
-        int prediction = getBallPrediction();
-        if (prediction < paddle.getY()) {
+         if (ball.getY() <= paddle.getY()) {
             paddle.setUpAccel(true);
             paddle.setDownAccel(false);
-        } else {
+        } else if (ball.getY() >= paddle.getY() + PADDLE_HEIGHT) {
             paddle.setUpAccel(false);
             paddle.setDownAccel(true);
-        }
+        } else {
+             paddle.setUpAccel(false);
+             paddle.setDownAccel(false);
+         }
     }
-
-    private int getBallPrediction() {
-        //get ball y assuming infinitely tall court
-        //bounce prediction off the top and bottom walls until it reaches the paddle
-        double x = ball.getX();
-        double y = ball.getY();
-        while (x > paddle.getX()) {
-            if (y >= PongFrame.HEIGHT || y <= 0) {
-                velY *= -1;
-            }
-            x += velX;
-            y += velY;
-        }
-        
-        return (int) y;
-    }
-
 }
